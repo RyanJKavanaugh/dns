@@ -31,6 +31,7 @@ class Verify_DNS_Data_From_Spreadsheet(unittest.TestCase):
 
             except:
                 print domainName
+                print 'here'
                 print 'Row number: ' + str(x + 1)
                 print domainName + ' did not connect properly'
                 testCounter += 1
