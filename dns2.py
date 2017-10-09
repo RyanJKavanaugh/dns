@@ -24,6 +24,9 @@ class Verify_DNS_Data_From_Spreadsheet(unittest.TestCase):
                 domainName = worksheet.cell(x, 0).value
                 while ipAllNumbers == None:
                     ipAllNumbers = socket.gethostbyname(domainName)
+                    if ipAllNumbers == None:
+                        ipAllNumbers = socket.gethostbyname(domainName)
+                        time.sleep(3)
                 ipEnd = ipAllNumbers[-3:]
                 ipEnd = int(ipEnd)
                 nsLookUpAddress = int(worksheet.cell(x, 3).value)
@@ -66,8 +69,6 @@ class Verify_DNS_Data_From_Spreadsheet(unittest.TestCase):
                         time.sleep(2)
                         result = req.content
                         time.sleep(1)
-
-
 
                 expectedResponse = str(worksheet.cell(x, 2).value)
 
