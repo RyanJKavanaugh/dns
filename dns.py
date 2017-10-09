@@ -31,10 +31,11 @@ class Verify_DNS_Data_From_Spreadsheet(unittest.TestCase):
 
             except:
                 print ipAllNumbers
-                print 'Check the ip for a discrepancy'
+                print 'Check the ip for an error'
                 print 'Row number: ' + str(x + 1)
                 print domainName + ' did not connect properly'
                 testCounter += 1
+                print
 
 
         print
