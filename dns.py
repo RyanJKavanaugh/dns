@@ -26,8 +26,9 @@ class Verify_DNS_Data_From_Spreadsheet(unittest.TestCase):
                 ipEnd = int(ipEnd)
                 nsLookUpAddress = int(worksheet.cell(x, 3).value)
                 if (ipEnd != nsLookUpAddress):
-                    print domainName + ' is providing an incorrect nslookup address'
                     print ipAllNumbers
+                    print domainName + ' is providing an incorrect nslookup address'
+                    print 'Row number: ' + str(x + 1)
                     testCounter += 1
 
             except:
