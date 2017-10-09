@@ -29,6 +29,7 @@ class Verify_DNS_Data_From_Spreadsheet(unittest.TestCase):
                     print ipAllNumbers
                     print domainName + ' is providing an incorrect nslookup address'
                     print 'Row number: ' + str(x + 1)
+                    print
                     testCounter += 1
 
             except:
