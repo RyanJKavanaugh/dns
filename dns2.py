@@ -32,9 +32,9 @@ class Verify_DNS_Data_From_Spreadsheet(unittest.TestCase):
                 # while ipAllNumbers == None:
                 #     ipAllNumbers = socket.gethostbyname(domainName)
                 #
-                #     if ipAllNumbers == None:
-                #         ipAllNumbers = socket.gethostbyname(domainName)
-                #         time.sleep(3)
+                if ipAllNumbers == None:
+                    ipAllNumbers = socket.gethostbyname(domainName)
+                    time.sleep(3)
 
                 ipEnd = ipAllNumbers[-3:]
                 ipEnd = int(ipEnd)
