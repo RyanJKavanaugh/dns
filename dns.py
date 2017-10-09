@@ -19,16 +19,16 @@ class Verify_DNS_Data_From_Spreadsheet(unittest.TestCase):
         for x in range(1, 55):
             ipAllNumbers = None
             try:
+                domainName = worksheet.cell(x, 0).value
                 while ipAllNumbers == None:
-                    domainName = worksheet.cell(x, 0).value
                     ipAllNumbers = socket.gethostbyname(domainName)
-                    ipEnd = ipAllNumbers[-3:]
-                    ipEnd = int(ipEnd)
-                    nsLookUpAddress = int(worksheet.cell(x, 3).value)
-                    if (ipEnd != nsLookUpAddress):
-                        print domainName + ' is providing an incorrect nslookup address'
-                        print ipAllNumbers
-                        testCounter += 1
+                ipEnd = ipAllNumbers[-3:]
+                ipEnd = int(ipEnd)
+                nsLookUpAddress = int(worksheet.cell(x, 3).value)
+                if (ipEnd != nsLookUpAddress):
+                    print domainName + ' is providing an incorrect nslookup address'
+                    print ipAllNumbers
+                    testCounter += 1
 
             except:
                 print ipAllNumbers
