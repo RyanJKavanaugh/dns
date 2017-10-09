@@ -24,14 +24,8 @@ class Verify_DNS_Data_From_Spreadsheet(unittest.TestCase):
 
                 testPrintOut = socket.getaddrinfo(domainName, 80)
 
-                # print x
-                # print testPrintOut[0][4][0]
                 ipAllNumbers = testPrintOut[0][4][0]
-                # print map(itemgetter(5), testPrintOut)
 
-                # while ipAllNumbers == None:
-                #     ipAllNumbers = socket.gethostbyname(domainName)
-                #
                 if ipAllNumbers == None:
                     ipAllNumbers = socket.gethostbyname(domainName)
                     time.sleep(3)
@@ -74,7 +68,7 @@ class Verify_DNS_Data_From_Spreadsheet(unittest.TestCase):
                 while result == None:
                     req = requests.get(url)
                     result = req.content
-                    if req.status_code != 200:
+                    while req.status_code != 200:
                         result = None
                         req = requests.get(url)
                         time.sleep(2)
