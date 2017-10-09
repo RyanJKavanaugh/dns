@@ -2,7 +2,6 @@
 import socket
 import xlrd
 import requests
-import whois
 import json
 import unittest
 import time
