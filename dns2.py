@@ -48,6 +48,7 @@ class Verify_DNS_Data_From_Spreadsheet(unittest.TestCase):
         print 'CARGTM Name vs. Expected Response:'
         print
 
+        # print requests.get('http://511-idaho-gov.cragtm.org').content
 
         for x in range(1, 55):
             try:
@@ -56,10 +57,7 @@ class Verify_DNS_Data_From_Spreadsheet(unittest.TestCase):
                 result = None
 
                 while result == None:
-                   # res = requests.post(url)
-                    req = urllib2.Request(url)
-                    response = urllib2.urlopen(req)
-                    result = response.read()
+                    result = requests.get(url).content
 
                 expectedResponse = str(worksheet.cell(x, 2).value)
 
