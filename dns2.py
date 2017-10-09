@@ -65,13 +65,14 @@ class Verify_DNS_Data_From_Spreadsheet(unittest.TestCase):
                     print url
                     print expectedResponse
                     print 'Row number: ' + str(x + 1)
+                    print result
                     print
                     testCounter += 1
             except:
                 print str(worksheet.cell(x, 1).value)
                 print 'Did no connect properly'
                 print 'Row number: ' + str(x + 1)
-                print
+                print result
                 testCounter += 1
 
 
