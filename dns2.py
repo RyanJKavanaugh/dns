@@ -5,6 +5,7 @@ import requests
 import urllib2
 import json
 import unittest
+import time
 
 workbook = xlrd.open_workbook('dns.xlsx')
 worksheet = workbook.sheet_by_index(0)
@@ -58,6 +59,7 @@ class Verify_DNS_Data_From_Spreadsheet(unittest.TestCase):
 
                 while result == None:
                     result = requests.get(url).content
+                    time.sleep(1)
 
                 expectedResponse = str(worksheet.cell(x, 2).value)
 
