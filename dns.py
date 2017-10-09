@@ -46,7 +46,7 @@ class Verify_DNS_Data_From_Spreadsheet(unittest.TestCase):
 
         # Run through the CARGTM Names and ensure they respond correctly from a curl-style request
         print 'CARGTM Name vs. Expected Response:'
-
+        print
         for x in range(1, 55):
             try:
                 item = str(worksheet.cell(x, 1).value)
