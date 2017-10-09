@@ -6,7 +6,7 @@ import urllib2
 import json
 import unittest
 
-workbook = xlrd.open_workbook('DNS Testing.xlsx')
+workbook = xlrd.open_workbook('dns.xlsx')
 worksheet = workbook.sheet_by_index(0)
 
 
