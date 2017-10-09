@@ -69,7 +69,7 @@ class Verify_DNS_Data_From_Spreadsheet(unittest.TestCase):
                     req = requests.get(url)
                     result = req.content
                     while req.status_code != 200:
-                        result = None
+                     #   result = None
                         req = requests.get(url)
                         time.sleep(2)
                         result = req.content
@@ -84,9 +84,10 @@ class Verify_DNS_Data_From_Spreadsheet(unittest.TestCase):
                     print result
                     print
                     testCounter += 1
+
             except:
                 print str(worksheet.cell(x, 1).value)
-                print 'Did no connect properly'
+                print 'Did not connect properly'
                 print 'Row number: ' + str(x + 1)
                 print result
                 testCounter += 1
