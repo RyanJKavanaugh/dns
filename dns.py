@@ -16,6 +16,7 @@ class Verify_DNS_Data_From_Spreadsheet(unittest.TestCase):
         print
         # Runs through the Domain Names & Verifies the IP addresses
         print 'Domain Name vs. NS Look Up Address:'
+        print
         for x in range(1, 55):
             ipAllNumbers = None
             try:
