@@ -58,8 +58,10 @@ class Verify_DNS_Data_From_Spreadsheet(unittest.TestCase):
                 result = None
 
                 while result == None:
-                    result = requests.get(url).content
-                    time.sleep(1)
+                    req = requests.get(url)
+                    result = req.content
+                    if req.status_code != 200:
+                        result = None
 
                 expectedResponse = str(worksheet.cell(x, 2).value)
 
