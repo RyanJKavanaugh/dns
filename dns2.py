@@ -92,6 +92,8 @@ class Verify_DNS_Data_From_Spreadsheet(unittest.TestCase):
                 print result
                 testCounter += 1
 
+        print requests.get('http://co-carsprogram-org.cragtm.org').content
+
 
         if testCounter > 0:
             assert False, 'DNS test failed'
