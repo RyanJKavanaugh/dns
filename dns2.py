@@ -2,7 +2,7 @@
 import socket
 import xlrd
 import requests
-import urllib2
+import whois
 import json
 import unittest
 import time
@@ -22,14 +22,22 @@ class Verify_DNS_Data_From_Spreadsheet(unittest.TestCase):
             ipAllNumbers = None
             try:
                 domainName = worksheet.cell(x, 0).value
+
+                testPrintOut = socket.getaddrinfo(domainName, 80)
+                print testPrintOut
+
                 while ipAllNumbers == None:
                     ipAllNumbers = socket.gethostbyname(domainName)
+
                     if ipAllNumbers == None:
                         ipAllNumbers = socket.gethostbyname(domainName)
                         time.sleep(3)
+
                 ipEnd = ipAllNumbers[-3:]
                 ipEnd = int(ipEnd)
+
                 nsLookUpAddress = int(worksheet.cell(x, 3).value)
+
                 if (ipEnd != nsLookUpAddress):
                     print ipAllNumbers
                     print domainName + ' is providing an incorrect nslookup address'
