@@ -13,14 +13,13 @@ worksheet = workbook.sheet_by_index(0)
 class Verify_DNS_Data_From_Spreadsheet(unittest.TestCase):
     def test_dns_data(self):
         testCounter = 0
-        ipAllNumbers = None
         print
         # Runs through the Domain Names & Verifies the IP addresses
         print 'Domain Name vs. NS Look Up Address:'
         for x in range(1, 55):
-
-            while ipAllNumbers == None:
-                try:
+            ipAllNumbers = None
+            try:
+                while ipAllNumbers == None:
                     domainName = worksheet.cell(x, 0).value
                     ipAllNumbers = socket.gethostbyname(domainName)
                     ipEnd = ipAllNumbers[-3:]
@@ -30,14 +29,13 @@ class Verify_DNS_Data_From_Spreadsheet(unittest.TestCase):
                         print domainName + ' is providing an incorrect nslookup address'
                         testCounter += 1
 
-                except:
-                    print ipAllNumbers
-                    print 'Check the ip for a discrepancy'
-                    print 'Row number: ' + str(x + 1)
-                    print domainName + ' did not connect properly'
-                    testCounter += 1
+            except:
+                print ipAllNumbers
+                print 'Check the ip for a discrepancy'
+                print 'Row number: ' + str(x + 1)
+                print domainName + ' did not connect properly'
+                testCounter += 1
 
-            ipAllNumbers = None
 
         print
 
