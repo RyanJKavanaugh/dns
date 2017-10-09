@@ -1,4 +1,4 @@
-# /Users/ryankavanaugh/Desktop/DNS\ Test
+# /Users/ryankavanaugh/Desktop/DNSTest
 import socket
 import xlrd
 import requests
@@ -13,6 +13,7 @@ worksheet = workbook.sheet_by_index(0)
 class Verify_DNS_Data_From_Spreadsheet(unittest.TestCase):
     def test_dns_data(self):
         testCounter = 0
+        domainName = ''
         print
         # Runs through the Domain Names & Verifies the IP addresses
         print 'Domain Name vs. NS Look Up Address:'
@@ -36,6 +37,8 @@ class Verify_DNS_Data_From_Spreadsheet(unittest.TestCase):
                     print 'Row number: ' + str(x + 1)
                     print domainName + ' did not connect properly'
                     testCounter += 1
+
+            domainName = ''
 
         print
 
