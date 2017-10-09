@@ -23,14 +23,18 @@ class Verify_DNS_Data_From_Spreadsheet(unittest.TestCase):
                 domainName = worksheet.cell(x, 0).value
 
                 testPrintOut = socket.getaddrinfo(domainName, 80)
-                print testPrintOut
 
-                while ipAllNumbers == None:
-                    ipAllNumbers = socket.gethostbyname(domainName)
+                # print x
+                # print testPrintOut[0][4][0]
+                ipAllNumbers = testPrintOut[0][4][0]
+                # print map(itemgetter(5), testPrintOut)
 
-                    if ipAllNumbers == None:
-                        ipAllNumbers = socket.gethostbyname(domainName)
-                        time.sleep(3)
+                # while ipAllNumbers == None:
+                #     ipAllNumbers = socket.gethostbyname(domainName)
+                #
+                #     if ipAllNumbers == None:
+                #         ipAllNumbers = socket.gethostbyname(domainName)
+                #         time.sleep(3)
 
                 ipEnd = ipAllNumbers[-3:]
                 ipEnd = int(ipEnd)
