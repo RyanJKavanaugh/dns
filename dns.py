@@ -18,23 +18,24 @@ class Verify_DNS_Data_From_Spreadsheet(unittest.TestCase):
         print 'Domain Name vs. NS Look Up Address:'
         for x in range(1, 55):
 
-            try:
-                domainName = worksheet.cell(x, 0).value
-                ipAllNumbers = socket.gethostbyname(domainName)
-                ipEnd = ipAllNumbers[-3:]
-                ipEnd = int(ipEnd)
-                nsLookUpAddress = int(worksheet.cell(x, 3).value)
+            while domainName == None:
+                try:
+                    domainName = worksheet.cell(x, 0).value
+                    ipAllNumbers = socket.gethostbyname(domainName)
+                    ipEnd = ipAllNumbers[-3:]
+                    ipEnd = int(ipEnd)
+                    nsLookUpAddress = int(worksheet.cell(x, 3).value)
 
-                if (ipEnd != nsLookUpAddress):
-                    print domainName + ' is providing an incorrect nslookup address'
+                    if (ipEnd != nsLookUpAddress):
+                        print domainName + ' is providing an incorrect nslookup address'
+                        testCounter += 1
+
+                except:
+                    print domainName
+                    print 'here'
+                    print 'Row number: ' + str(x + 1)
+                    print domainName + ' did not connect properly'
                     testCounter += 1
-
-            except:
-                print domainName
-                print 'here'
-                print 'Row number: ' + str(x + 1)
-                print domainName + ' did not connect properly'
-                testCounter += 1
 
         print
 
